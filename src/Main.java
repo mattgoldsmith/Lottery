@@ -1,6 +1,7 @@
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
-        Lottery lotto = new Lottery();
+//        Lottery lotto = new Lottery();
+        Gui gui = new Gui();
     }
 }
