@@ -14,32 +14,45 @@ public class Lottery {
     int match4 = 0;
     int match5 = 0;
     int match6 = 0;
+    int week = 0;
     boolean jackpot;
+
+    String weekNumber;
+    String selectedNumbers;
+    String drawnNumbers;
+    String matches;
+    String moneySpent;
+    String moneyWon;
+    String moneyTotal;
+
 
     public Lottery() throws InterruptedException {
         ticketPrice = 2;
         jackpot = false;
-        playLottery();
     }
 
-    private void playLottery() throws InterruptedException {
-        int week = 0;
-        while(!jackpot) {
-            week++;
-            System.out.println("----Week " + formatNumber(week) + "----");
-            pickNumbers();
-            drawBalls();
-            System.out.println("Selected Numbers: " + selection);
-            System.out.println("Weekly Draw: " + weeklyDraw);
-            verify();
-            spent += ticketPrice;
-            total = won - spent;
-            System.out.println("Spent: " + formatNumber(spent));
-            System.out.println("Won: " + formatNumber(won));
-            System.out.println("Total: " + formatNumber(total));
-            System.out.println("Matches [2:" + match2 + ", 3:" + match3 + ", 4:" + match4 + ", 5:" + match5 + ", 6:" + match6 + "]" );
-//            Thread.sleep(5);
-        }
+    public void playLottery() throws InterruptedException {
+        week++;
+        this.weekNumber = "----Week " + formatNumber(week) + "----";
+        System.out.println(this.weekNumber);
+        pickNumbers();
+        drawBalls();
+        selectedNumbers = "Selected Numbers: " + selection;
+        System.out.println(selectedNumbers);
+        drawnNumbers = "Weekly Draw: " + weeklyDraw;
+        System.out.println(drawnNumbers);
+        verify();
+        spent += ticketPrice;
+        total = won - spent;
+        moneySpent = "Spent: " + formatNumber(spent);
+        System.out.println(moneySpent);
+        moneyWon = "Won: " + formatNumber(won);
+        System.out.println(moneyWon);
+        moneyTotal = "Total: " + formatNumber(total);
+        System.out.println(moneyTotal);
+        matches = "Matches [2:" + match2 + ", 3:" + match3 + ", 4:" + match4 + ", 5:" + match5 + ", 6:" + match6 + "]";
+        System.out.println(matches);
+//      Thread.sleep(5);
     }
 
     private void drawBalls() {
@@ -110,5 +123,37 @@ public class Lottery {
     private static String formatNumber(double value) {
         DecimalFormat df = new DecimalFormat("###,###,###");
         return df.format(value);
+    }
+
+    public boolean getJackpot() {
+        return jackpot;
+    }
+
+    public String getWeekNumber() {
+        return weekNumber;
+    }
+
+    public String getSelectedNumbers() {
+        return selectedNumbers;
+    }
+
+    public String getDrawnNumbers() {
+        return drawnNumbers;
+    }
+
+    public String getMatches() {
+        return matches;
+    }
+
+    public String getMoneySpent() {
+        return moneySpent;
+    }
+
+    public String getMoneyWon() {
+        return moneyWon;
+    }
+
+    public String getMoneyTotal() {
+        return moneyTotal;
     }
 }
